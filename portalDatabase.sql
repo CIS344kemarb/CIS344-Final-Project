@@ -53,30 +53,6 @@ END //
 
 DELIMITER ;
 
-CREATE VIEW DoctorAppointmentsView AS
-SELECT
-    A.appointment_id,
-    A.appointment_date,
-    A.appointment_time,
-    D.doctor_id,
-    D.doctor_name,
-    D.specialization,
-    D.contact_number AS doctor_contact,
-    D.email AS doctor_email,
-    P.patient_id,
-    P.patient_name,
-    P.age,
-    P.admission_date,
-    P.discharge_date
-FROM
-    Appointments A
-    JOIN Doctors D ON A.doctor_id = D.doctor_id
-    JOIN Patients P ON A.patient_id = P.patient_id;
-    
-    SELECT * FROM DoctorAppointmentsView;
-    
-    DELETE FROM patients WHERE patient_id > 3;
-
 INSERT INTO patients (patient_name, age, admission_date, discharge_date) VALUES
     ('Sean Carter', 50, "2023-02-13", "2023-02-14"),  
     ('Ray Lewis', 32, "2023-11-11", "2023-11-20"),  
