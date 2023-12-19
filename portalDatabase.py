@@ -102,35 +102,6 @@ class Database():
 
         pass
 
-    def viewRecords(self):
-        ''' Method to view all doctors '''
-        if self.connection.is_connected():
-                self.cursor = self.connection.cursor()
-                query = '''
-                    SELECT
-                        A.appointment_id,
-                        A.appointment_date,
-                        A.appointment_time,
-                        D.doctor_id,
-                        D.doctor_name,
-                        D.specialization,
-                        D.contact_number AS doctor_contact,
-                        D.email AS doctor_email,
-                        P.patient_id,
-                        P.patient_name,
-                        P.age,
-                        P.admission_date,
-                        P.discharge_date
-                    FROM
-                        appointments A
-                        JOIN doctors D ON A.doctor_id = D.doctor_id
-                        JOIN patients P ON A.patient_id = P.patient_id;
-                '''
-                self.cursor.execute(query)
-                records = self.cursor.fetchall()
-                return records
-
-        pass
 
     def updatePatientDetails(self, patient_id, new_name, new_age):
         ''' Method to update patient details '''
